@@ -327,6 +327,19 @@ module FamilySearch
       
       coerce_key :parts, [NamePart]
       coerce_key :field, EvidenceReference
+      
+      def surname
+        return '' if parts.nil?
+        surname_piece = parts.find{|p|p.type == 'http://gedcomx.org/Surname'}
+        surname_piece ? surname_piece.value : ''
+      end
+      
+      def given_name
+        return '' if parts.nil?
+        given_piece = parts.find{|p|p.type == 'http://gedcomx.org/Given'}
+        given_piece ? given_piece.value : ''
+      end
+      
     end
 
     class Name < Conclusion
@@ -339,7 +352,16 @@ module FamilySearch
       
       def fullText
         (nameForms && nameForms[0]) ? nameForms[0].fullText : ""
-      end    
+      end
+      
+      def surname
+        (nameForms && nameForms[0]) ? nameForms[0].surname : ""
+      end
+      
+      def given_name
+        (nameForms && nameForms[0]) ? nameForms[0].given_name : ""
+      end
+      
     end
     
     class Person < Subject
@@ -361,7 +383,15 @@ module FamilySearch
       end
       
       def full_name
-        names[0].fullText
+        (name) ? name.fullText : ''
+      end
+      
+      def surname
+        (name) ? name.surname : ''
+      end
+      
+      def given_name
+        (name) ? name.given_name : ''
       end
       
       def birth

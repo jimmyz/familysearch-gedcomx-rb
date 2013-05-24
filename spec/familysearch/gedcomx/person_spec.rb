@@ -33,7 +33,57 @@ describe FamilySearch::Gedcomx::Person do
       it "should return the first name's first nameForm's fullText" do
         subject.full_name.should == "Marshall P Felch"
       end
+      
+      it "should return '' if there are no names" do
+        subject.names = []
+        subject.full_name.should == ''
+        subject.names = nil
+        subject.full_name.should == ''
+      end
     end
+    
+    describe "#surname" do
+      it "should return the surname of the first name's first nameForm" do
+        subject.surname.should == "Felch"
+      end
+      
+      it "should return '' if there is a nil anywhere in the process" do
+        subject.names[0].nameForms[0].parts = []
+        subject.surname.should == ''
+        subject.names[0].nameForms[0].parts = nil
+        subject.surname.should == ''
+        subject.names[0].nameForms = []
+        subject.surname.should == ''
+        subject.names[0].nameForms = nil
+        subject.surname.should == ''
+        subject.names= []
+        subject.surname.should == ''
+        subject.names= nil
+        subject.surname.should == ''
+      end
+    end
+    
+    describe "#given_name" do
+      it "should return the surname of the first name's first nameForm" do
+        subject.given_name.should == "Marshall P"
+      end
+      
+      it "should return '' if there is a nil anywhere in the process" do
+        subject.names[0].nameForms[0].parts = []
+        subject.given_name.should == ''
+        subject.names[0].nameForms[0].parts = nil
+        subject.given_name.should == ''
+        subject.names[0].nameForms = []
+        subject.given_name.should == ''
+        subject.names[0].nameForms = nil
+        subject.given_name.should == ''
+        subject.names= []
+        subject.given_name.should == ''
+        subject.names= nil
+        subject.given_name.should == ''
+      end
+    end
+    
     
     describe "#id" do
       it "should return the person's id" do
