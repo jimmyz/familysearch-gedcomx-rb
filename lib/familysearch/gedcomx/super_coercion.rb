@@ -39,32 +39,33 @@ module FamilySearch
 
       module InstanceMethods
         def []=(key, value)
-          into = self.class.key_coercion(key) || self.class.value_coercion(value)
-          # puts "key: #{key.inspect}, into: #{into.inspect}"
-          if value && into
-            if into.class == Array && value.class == Array
-              value = value.collect do |v| 
-                if into[0].respond_to?(:coerce)
-                  into[0].coerce(v)
-                else
-                  into[0].new(v)
+          if value && [Array,Hash].include?(value.class)
+            into = self.class.key_coercion(key) || self.class.value_coercion(value)
+            if value && into
+              if into.class == Array && value.class == Array
+                value = value.collect do |v| 
+                  if into[0].respond_to?(:coerce)
+                    into[0].coerce(v)
+                  else
+                    into[0].new(v)
+                  end
                 end
-              end
-            elsif into.class == Hash && value.class == Hash
-              into_value = into['key']
-              value = value.inject({}) do |h, (k, v)| 
-                if into_value.respond_to?(:coerce)
-                  h[k] = into_value.coerce(v)
-                else
-                  h[k] = into_value.new(v)
+              elsif into.class == Hash && value.class == Hash
+                into_value = into['key']
+                value = value.inject({}) do |h, (k, v)| 
+                  if into_value.respond_to?(:coerce)
+                    h[k] = into_value.coerce(v)
+                  else
+                    h[k] = into_value.new(v)
+                  end
+                  h
                 end
-                h
-              end
-            else
-              if into.respond_to?(:coerce)
-                value = into.coerce(value)
               else
-                value = into.new(value)
+                if into.respond_to?(:coerce)
+                  value = into.coerce(value)
+                else
+                  value = into.new(value)
+                end
               end
             end
           end
