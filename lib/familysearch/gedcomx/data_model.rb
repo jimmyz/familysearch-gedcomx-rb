@@ -621,9 +621,11 @@ module FamilySearch
         if self.places
           place_references = find_place_references(self)
           place_references.each do |pr|
-            id = pr.description.gsub("#","")
-            place = self.places.find{|pd|pd.id == id}
-            pr.normalized = place
+            if pr.description
+              id = pr.description.gsub("#","")
+              place = self.places.find{|pd|pd.id == id}
+              pr.normalized = place
+            end
           end
         end
       end
