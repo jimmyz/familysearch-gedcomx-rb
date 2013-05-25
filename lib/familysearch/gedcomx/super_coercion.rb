@@ -22,15 +22,14 @@
 # WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE SOFTWARE.
 
 # 
-# This is basically the Hashie::Extensions::Coercion module, but
-# this needed to be able to support things like this:
-# 
-#     coerce_key :persons, [Person]
-# 
-# This allows the objects inside of arrays to be parsed 
-# 
 module FamilySearch
   module Gedcomx
+    # This is basically the Hashie::Extensions::Coercion module, but
+    # this needed to be able to support things like this:
+    # 
+    #     coerce_key :persons, [Person]
+    # 
+    # This allows the objects inside of arrays to be parsed 
     module SuperCoercion
       def self.included(base)
         base.send :extend, ClassMethods

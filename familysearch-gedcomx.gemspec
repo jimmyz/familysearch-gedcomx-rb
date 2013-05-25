@@ -8,9 +8,9 @@ Gem::Specification.new do |spec|
   spec.version       = FamilySearch::Gedcomx::VERSION
   spec.authors       = ["Jimmy Zimmerman"]
   spec.email         = ["jimmy.zimmerman@gmail.com"]
-  spec.description   = %q{TODO: Write a gem description}
-  spec.summary       = %q{TODO: Write a gem summary}
-  spec.homepage      = ""
+  spec.description   = %q{A structured object model for the application/x-fs-v1+json media type.}
+  spec.summary       = %q{A structured object model for the application/x-fs-v1+json media type}
+  spec.homepage      = "https://github.com/jimmyz/familysearch-gedcomx-rb"
   spec.license       = "MIT"
 
   spec.files         = `git ls-files`.split($/)
