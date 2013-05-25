@@ -1,3 +1,5 @@
+require "familysearch/gedcomx/graph_parents"
+
 module FamilySearch
   module Gedcomx
     class GraphPerson < Person
@@ -27,6 +29,20 @@ module FamilySearch
       
       def mother
         self.graph.person(mother_id)
+      end
+      
+      def all_parents
+        @all_parents ||= get_all_parents
+      end
+      
+      private
+      
+      def get_all_parents
+        caprs = self.graph.childAndParentsRelationships.select{|cpr|cpr.child.resourceId == self.id}
+        all_parents = caprs.collect do |capr|
+          GraphParents.new(capr,self.graph)
+        end
+        all_parents
       end
       
     end
