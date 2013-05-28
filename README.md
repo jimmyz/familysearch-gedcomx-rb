@@ -108,7 +108,7 @@ The major version of this gem will match the current value of the application/x-
 
 Minor version updates should indicate a potential break in backwards compatibility. If a new feature is introduced in this library that will potentially break a client relying on a "~> 1.0.0" dependency, then the minor version will be incremented.
 
-Any other versions that introduce new features that are backwards deemed backwards compatible, will bump the patch number (1.0.1).
+Any other versions that introduce new features that are backwards compatible, will bump the patch number (1.0.1).
 
 ## Contributing
 
