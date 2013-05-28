@@ -89,13 +89,13 @@ Many API use cases involve displaying family ancestral pedigrees. This gem provi
 	graph = FamilySearch::Gedcomx::Graph.new
 	
 	# Get persons with relationships
-	familysearch_child = client.template('persons-with-relationships').get 'person' => 'KWQS-BBQ'
+	familysearch_child = client.template('person-with-relationships').get({'person' => 'KWQS-BBQ'}).body
 	
 	graph << familysearch_child
 	graph.root #=> the person of the object you just pushed into the graph
 	father_id = graph.root.father_id
 	
-	familysearch_father = client.template('persons-with-relationships').get 'person' => father_id
+	familysearch_father = client.template('person-with-relationships').get({'person' => father_id}).body
 	
 	graph << familysearch_father
 	
