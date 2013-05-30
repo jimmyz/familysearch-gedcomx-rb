@@ -1,0 +1,423 @@
+{
+  "results" : 4,
+  "index" : 0,
+  "links" : {
+    "next" : {
+      "href" : "https://sandbox.familysearch.org/platform/tree/search?context=AQATNTk5NDY4MzUzOTQ4Njk1NzQyMQAAAAZTMWTrAABfbQA%3D&start=4",
+      "title" : "Person Search"
+    },
+    "self" : {
+      "href" : "https://sandbox.familysearch.org/platform/tree/search?q=givenName:John+surname:Smith+gender:male",
+      "title" : "Person Search"
+    },
+    "first" : {
+      "href" : "https://sandbox.familysearch.org/platform/tree/search?context=AQATNTk5NDY4MzUzOTQ4Njk1NzQyMQAAAAZTMWTrAABfbQA%3D&start=0",
+      "title" : "Person Search"
+    }
+  },
+  "subtitle" : "Results of searching for persons.",
+  "title" : "Results",
+  "entries" : [ {
+    "content" : {
+      "gedcomx" : {
+        "persons" : [ {
+          "id" : "KW7M-6SD",
+          "links" : {
+            "person" : {
+              "href" : "https://sandbox.familysearch.org/platform/tree/persons/KW7M-6SD",
+              "title" : "Person"
+            }
+          },
+          "living" : false,
+          "gender" : {
+            "type" : "http://gedcomx.org/Male"
+          },
+          "names" : [ {
+            "type" : "http://gedcomx.org/BirthName",
+            "nameForms" : [ {
+              "fullText" : "John Smith"
+            } ]
+          } ],
+          "facts" : [ {
+            "type" : "http://gedcomx.org/Birth",
+            "date" : {
+              "original" : "1 January 1900"
+            },
+            "place" : {
+              "original" : "Jericho, Queensland, Australia"
+            }
+          } ],
+          "display" : {
+            "name" : "John Smith",
+            "gender" : "Male",
+            "birthDate" : "1 January 1900",
+            "birthPlace" : "Jericho, Queensland, Australia"
+          }
+        }, {
+          "id" : "KW7M-6S6",
+          "links" : {
+            "person" : {
+              "href" : "https://sandbox.familysearch.org/platform/tree/persons/KW7M-6S6",
+              "title" : "Person"
+            }
+          },
+          "living" : false,
+          "gender" : {
+            "type" : "http://gedcomx.org/Female"
+          },
+          "names" : [ {
+            "type" : "http://gedcomx.org/BirthName",
+            "nameForms" : [ {
+              "fullText" : "Mary Hawkins"
+            } ]
+          } ],
+          "facts" : [ {
+            "type" : "http://gedcomx.org/Marriage",
+            "date" : {
+              "original" : "2 Feb 1930"
+            },
+            "place" : {
+              "original" : "Melbourne, Victoria, Australia"
+            }
+          } ],
+          "display" : {
+            "name" : "Mary Hawkins",
+            "gender" : "Female"
+          }
+        } ],
+        "relationships" : [ {
+          "type" : "http://gedcomx.org/Couple",
+          "person1" : {
+            "resource" : "https://sandbox.familysearch.org/platform/tree/persons/KW7M-6SD",
+            "resourceId" : "KW7M-6SD"
+          },
+          "person2" : {
+            "resource" : "https://sandbox.familysearch.org/platform/tree/persons/KW7M-6S6",
+            "resourceId" : "KW7M-6S6"
+          }
+        } ]
+      }
+    },
+    "id" : "KW7M-6SD",
+    "score" : 512.5161,
+    "confidence" : 5,
+    "links" : {
+      "person" : {
+        "href" : "https://sandbox.familysearch.org/platform/tree/persons/KW7M-6SD",
+        "title" : "Person"
+      }
+    },
+    "title" : "Person KW7M-6SD (John Smith)"
+  }, {
+    "content" : {
+      "gedcomx" : {
+        "persons" : [ {
+          "id" : "KW73-8G5",
+          "links" : {
+            "person" : {
+              "href" : "https://sandbox.familysearch.org/platform/tree/persons/KW73-8G5",
+              "title" : "Person"
+            }
+          },
+          "living" : false,
+          "gender" : {
+            "type" : "http://gedcomx.org/Male"
+          },
+          "names" : [ {
+            "type" : "http://gedcomx.org/BirthName",
+            "nameForms" : [ {
+              "fullText" : "John SMITH"
+            } ]
+          } ],
+          "facts" : [ {
+            "type" : "http://gedcomx.org/Birth",
+            "date" : {
+              "original" : "28 May 1687"
+            }
+          } ],
+          "display" : {
+            "name" : "John SMITH",
+            "gender" : "Male",
+            "birthDate" : "28 May 1687"
+          }
+        }, {
+          "id" : "KW73-8GR",
+          "links" : {
+            "person" : {
+              "href" : "https://sandbox.familysearch.org/platform/tree/persons/KW73-8GR",
+              "title" : "Person"
+            }
+          },
+          "living" : false,
+          "gender" : {
+            "type" : "http://gedcomx.org/Female"
+          },
+          "names" : [ {
+            "type" : "http://gedcomx.org/BirthName",
+            "nameForms" : [ {
+              "fullText" : "Elizabeth BRYCE"
+            } ]
+          } ],
+          "display" : {
+            "name" : "Elizabeth BRYCE",
+            "gender" : "Female"
+          }
+        }, {
+          "id" : "KW73-8GV",
+          "links" : {
+            "person" : {
+              "href" : "https://sandbox.familysearch.org/platform/tree/persons/KW73-8GV",
+              "title" : "Person"
+            }
+          },
+          "living" : false,
+          "gender" : {
+            "type" : "http://gedcomx.org/Male"
+          },
+          "names" : [ {
+            "type" : "http://gedcomx.org/BirthName",
+            "nameForms" : [ {
+              "fullText" : "Francis SMITH"
+            } ]
+          } ],
+          "display" : {
+            "name" : "Francis SMITH",
+            "gender" : "Male"
+          }
+        } ],
+        "relationships" : [ {
+          "type" : "http://gedcomx.org/Couple",
+          "person1" : {
+            "resource" : "https://sandbox.familysearch.org/platform/tree/persons/KW73-8G5",
+            "resourceId" : "KW73-8G5"
+          },
+          "person2" : {
+            "resource" : "https://sandbox.familysearch.org/platform/tree/persons/KW73-8GR",
+            "resourceId" : "KW73-8GR"
+          }
+        }, {
+          "type" : "http://gedcomx.org/ParentChild",
+          "person1" : {
+            "resource" : "https://sandbox.familysearch.org/platform/tree/persons/KW73-8G5",
+            "resourceId" : "KW73-8G5"
+          },
+          "person2" : {
+            "resource" : "https://sandbox.familysearch.org/platform/tree/persons/KW73-8GV",
+            "resourceId" : "KW73-8GV"
+          }
+        } ]
+      }
+    },
+    "id" : "KW73-8G5",
+    "score" : 512.516,
+    "confidence" : 5,
+    "links" : {
+      "person" : {
+        "href" : "https://sandbox.familysearch.org/platform/tree/persons/KW73-8G5",
+        "title" : "Person"
+      }
+    },
+    "title" : "Person KW73-8G5 (John SMITH)"
+  }, {
+    "content" : {
+      "gedcomx" : {
+        "persons" : [ {
+          "id" : "KWQB-VJS",
+          "links" : {
+            "person" : {
+              "href" : "https://sandbox.familysearch.org/platform/tree/persons/KWQB-VJS",
+              "title" : "Person"
+            }
+          },
+          "living" : false,
+          "gender" : {
+            "type" : "http://gedcomx.org/Male"
+          },
+          "names" : [ {
+            "type" : "http://gedcomx.org/BirthName",
+            "nameForms" : [ {
+              "fullText" : "John Smith"
+            } ]
+          } ],
+          "facts" : [ {
+            "type" : "http://gedcomx.org/Death",
+            "date" : {
+              "original" : "1776"
+            },
+            "place" : {
+              "original" : "United States"
+            }
+          }, {
+            "type" : "http://gedcomx.org/Birth",
+            "date" : {
+              "original" : "1735"
+            },
+            "place" : {
+              "original" : "England"
+            }
+          } ],
+          "display" : {
+            "name" : "John Smith",
+            "gender" : "Male",
+            "birthDate" : "1735",
+            "birthPlace" : "England",
+            "deathDate" : "1776",
+            "deathPlace" : "United States"
+          }
+        } ],
+        "relationships" : [ ]
+      }
+    },
+    "id" : "KWQB-VJS",
+    "score" : 512.51575,
+    "confidence" : 5,
+    "links" : {
+      "person" : {
+        "href" : "https://sandbox.familysearch.org/platform/tree/persons/KWQB-VJS",
+        "title" : "Person"
+      }
+    },
+    "title" : "Person KWQB-VJS (John Smith)"
+  }, {
+    "content" : {
+      "gedcomx" : {
+        "persons" : [ {
+          "id" : "KWQZ-8LK",
+          "links" : {
+            "person" : {
+              "href" : "https://sandbox.familysearch.org/platform/tree/persons/KWQZ-8LK",
+              "title" : "Person"
+            }
+          },
+          "living" : false,
+          "gender" : {
+            "type" : "http://gedcomx.org/Male"
+          },
+          "names" : [ {
+            "type" : "http://gedcomx.org/BirthName",
+            "nameForms" : [ {
+              "fullText" : "* John SMITH"
+            } ]
+          } ],
+          "facts" : [ {
+            "type" : "http://gedcomx.org/Death",
+            "date" : {
+              "original" : "12 Jun 1712"
+            },
+            "place" : {
+              "original" : "Haddam, Middlesesx, Connecticut"
+            }
+          }, {
+            "type" : "http://gedcomx.org/Christening",
+            "date" : {
+              "original" : "21 Mar 1670"
+            },
+            "place" : {
+              "original" : "Beckford, Herefordshire, Engl"
+            }
+          }, {
+            "type" : "http://gedcomx.org/Birth",
+            "date" : {
+              "original" : "ABT 1660"
+            },
+            "place" : {
+              "original" : "Haddam, Middlesex, Connecticut, United States"
+            }
+          } ],
+          "display" : {
+            "name" : "* John SMITH",
+            "gender" : "Male",
+            "birthDate" : "ABT 1660",
+            "birthPlace" : "Haddam, Middlesex, Connecticut, United States",
+            "deathDate" : "12 Jun 1712",
+            "deathPlace" : "Haddam, Middlesesx, Connecticut"
+          }
+        }, {
+          "id" : "KWQZ-8FD",
+          "links" : {
+            "person" : {
+              "href" : "https://sandbox.familysearch.org/platform/tree/persons/KWQZ-8FD",
+              "title" : "Person"
+            }
+          },
+          "living" : false,
+          "gender" : {
+            "type" : "http://gedcomx.org/Female"
+          },
+          "names" : [ {
+            "type" : "http://gedcomx.org/BirthName",
+            "nameForms" : [ {
+              "fullText" : "Sarah White"
+            } ]
+          } ],
+          "facts" : [ {
+            "type" : "http://gedcomx.org/Marriage",
+            "date" : {
+              "original" : "ABT 1682"
+            },
+            "place" : {
+              "original" : "Middletown, Middlesex, Connecticut, United States"
+            }
+          } ],
+          "display" : {
+            "name" : "Sarah White",
+            "gender" : "Female"
+          }
+        }, {
+          "id" : "KWQX-5TJ",
+          "links" : {
+            "person" : {
+              "href" : "https://sandbox.familysearch.org/platform/tree/persons/KWQX-5TJ",
+              "title" : "Person"
+            }
+          },
+          "living" : false,
+          "gender" : {
+            "type" : "http://gedcomx.org/Female"
+          },
+          "names" : [ {
+            "type" : "http://gedcomx.org/BirthName",
+            "nameForms" : [ {
+              "fullText" : "LA Verna Coleman"
+            } ]
+          } ],
+          "display" : {
+            "name" : "LA Verna Coleman",
+            "gender" : "Female"
+          }
+        } ],
+        "relationships" : [ {
+          "type" : "http://gedcomx.org/Couple",
+          "person1" : {
+            "resource" : "https://sandbox.familysearch.org/platform/tree/persons/KWQZ-8LK",
+            "resourceId" : "KWQZ-8LK"
+          },
+          "person2" : {
+            "resource" : "https://sandbox.familysearch.org/platform/tree/persons/KWQZ-8FD",
+            "resourceId" : "KWQZ-8FD"
+          }
+        }, {
+          "type" : "http://gedcomx.org/ParentChild",
+          "person1" : {
+            "resource" : "https://sandbox.familysearch.org/platform/tree/persons/KWQZ-8LK",
+            "resourceId" : "KWQZ-8LK"
+          },
+          "person2" : {
+            "resource" : "https://sandbox.familysearch.org/platform/tree/persons/KWQX-5TJ",
+            "resourceId" : "KWQX-5TJ"
+          }
+        } ]
+      }
+    },
+    "id" : "KWQZ-8LK",
+    "score" : 412.3539,
+    "confidence" : 4,
+    "links" : {
+      "person" : {
+        "href" : "https://sandbox.familysearch.org/platform/tree/persons/KWQZ-8LK",
+        "title" : "Person"
+      }
+    },
+    "title" : "Person KWQZ-8LK (* John SMITH)"
+  } ]
+}

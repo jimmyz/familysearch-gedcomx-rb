@@ -653,13 +653,92 @@ module FamilySearch
       property :databaseVersion
       property :platformVersion
     end
-    
-    class ResultConfidence < SuperDash
-      # Here to give a number 1-5. Not really a significant piece of the model.
-    end
-    
+        
     class Tag < SuperDash
       property :resource
-    end        
+    end
+    
+    class AtomCommonAttributes < SuperDash
+      property :base
+      property :lang
+    end
+    
+    class AtomExtensibleElement < AtomCommonAttributes
+      include SuperCoercion
+    end
+    
+    class AtomPerson < AtomExtensibleElement
+      property :name
+      property :uri
+      property :email
+    end
+    
+    class AtomGenerator < SuperDash
+      property :base
+      property :uri
+      property :lang
+      property :version
+      property :value
+    end
+    
+    class AtomCategory < AtomCommonAttributes
+      property :scheme
+      property :term
+      property :label
+    end
+    
+    class AtomContent < SuperDash
+      include SuperCoercion
+      property :type
+      property :gedcomx
+      
+      coerce_key :gedcomx, Gedcomx
+    end
+    
+    class AtomEntry < AtomExtensibleElement
+      property :authors
+      property :categories
+      property :confidence
+      property :content
+      property :contributors
+      property :id
+      property :links
+      property :published
+      property :rights
+      property :score
+      property :title
+      property :updated
+      
+      coerce_key :authors, [AtomPerson]
+      coerce_key :categories, [AtomCategory]
+      coerce_key :content, AtomContent
+      coerce_key :contributors, [AtomPerson]
+      coerce_key :links, {'key' => Link}
+    end
+    
+    class AtomFeed < AtomExtensibleElement
+      property :authors
+      property :contributors
+      property :generator
+      property :icon
+      property :id
+      property :results
+      property :index
+      property :links
+      property :logo
+      property :rights
+      property :subtitle
+      property :title
+      property :updated
+      property :entries
+      property :facets
+      
+      coerce_key :authors, [AtomPerson]
+      coerce_key :contributors, [AtomPerson]
+      coerce_key :generator, AtomGenerator
+      coerce_key :links, {'key' => Link}
+      coerce_key :entries, [AtomEntry]
+      coerce_key :facets, [Facet]
+    end
   end
 end
