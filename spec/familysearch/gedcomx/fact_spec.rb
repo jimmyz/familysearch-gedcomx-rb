@@ -11,11 +11,11 @@ describe FamilySearch::Gedcomx::Fact do
       end
       
       it "should have a #normalized method" do
-        subject.date.normalized[0].value.should == "June 1834"
+        subject.date.normalized[0].value.should == "20 June 1834"
       end
       
       it "should have an #original method" do
-        subject.date.original.should == "Jun 1834"
+        subject.date.original.should == "20 Jun 1834"
       end
     end
     
@@ -25,15 +25,15 @@ describe FamilySearch::Gedcomx::Fact do
       end
       
       it "should have a #normalized method" do
-        subject.place.normalized.should be_instance_of(FamilySearch::Gedcomx::PlaceDescription)
+        subject.place.normalized[0].should be_instance_of(FamilySearch::Gedcomx::TextValue)
       end
       
       it "should have a #normalized.value convenience method" do
-        subject.place.normalized.value.should == "Middlesex, Massachusetts, United States"
+        subject.place.normalized[0].value.should == "Lowell, Middlesex, Massachusetts, United States"
       end
       
       it "should have an #original method" do
-        subject.place.original.should == "Middlesex County, Massachusetts, United States"
+        subject.place.original.should == "Lowell,Middlx,Mass"
       end
     end  
   end

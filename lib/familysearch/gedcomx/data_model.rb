@@ -136,8 +136,8 @@ module FamilySearch
       property :field
       property :original      
       coerce_key :field, EvidenceReference
-      # Not part of the GedcomX spec, but used for convenience.
       property :normalized
+      coerce_key :normalized, [TextValue]
     end
     
     class Date < ExtensibleData
@@ -279,7 +279,7 @@ module FamilySearch
       
       coerce_key :evidence, [EvidenceReference]
       coerce_key :media, [SourceReference]
-      coerce_key :identifiers, [Identifier]
+      # coerce_key :identifiers, [Identifier]
     end
         
     class EventRole < Conclusion
@@ -612,24 +612,10 @@ module FamilySearch
       
       def initialize(args)
         super(args)
-        inject_places_into_people()
       end
       
       private
-      
-      def inject_places_into_people()
-        if self.places
-          place_references = find_place_references(self)
-          place_references.each do |pr|
-            if pr.description
-              id = pr.description.gsub("#","")
-              place = self.places.find{|pd|pd.id == id}
-              pr.normalized = place
-            end
-          end
-        end
-      end
-      
+            
       def find_place_references(hash_obj)
         place_references = []
         hash_obj.each do |k,v|

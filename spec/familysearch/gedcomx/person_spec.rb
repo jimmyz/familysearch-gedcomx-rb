@@ -132,7 +132,7 @@ describe FamilySearch::Gedcomx::Person do
     end
     
     describe "#christening" do
-      it "should return the person's first death event" do
+      it "should return the person's first christening event" do
         subject.christening.class.should == FamilySearch::Gedcomx::Fact
       end
       
