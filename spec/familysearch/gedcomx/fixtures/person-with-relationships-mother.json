@@ -693,6 +693,18 @@
       "resourceId" : "279W-XGP"
     }
   } ],
+  "sourceDescriptions" : [ {
+    "id" : "SD-L78M-TD6",
+    "about" : "#L78M-TD6",
+    "componentOf" : {
+      "description" : "https://familysearch.org/platform/collections/tree"
+    },
+    "resourceType" : "http://gedcomx.org/Person",
+    "identifiers" : {
+      "http://gedcomx.org/Persistent" : [ "https://familysearch.org/ark:/61903/4:1:L78M-TD6" ]
+    },
+    "modified" : 1370477507000
+  } ],
   "places" : [ {
     "id" : "1608951831",
     "names" : [ {
@@ -1308,5 +1320,6 @@
       },
       "type" : "http://gedcomx.org/BiologicalParent"
     } ]
-  } ]
+  } ],
+  "description" : "#SD-L78M-TD6"
 }

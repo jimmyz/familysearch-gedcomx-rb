@@ -561,6 +561,18 @@
       "resourceId" : "279W-JSC"
     }
   } ],
+  "sourceDescriptions" : [ {
+    "id" : "SD-L7PD-KY3",
+    "about" : "#L7PD-KY3",
+    "componentOf" : {
+      "description" : "https://familysearch.org/platform/collections/tree"
+    },
+    "resourceType" : "http://gedcomx.org/Person",
+    "identifiers" : {
+      "http://gedcomx.org/Persistent" : [ "https://familysearch.org/ark:/61903/4:1:L7PD-KY3" ]
+    },
+    "modified" : 1392749210000
+  } ],
   "places" : [ {
     "id" : "-1803045651",
     "names" : [ {
@@ -906,5 +918,6 @@
       },
       "type" : "http://gedcomx.org/BiologicalParent"
     } ]
-  } ]
+  } ],
+  "description" : "#SD-L7PD-KY3"
 }
