@@ -174,7 +174,7 @@ module FamilySearch
       coerce_key :fatherFacts, [Fact]
       coerce_key :motherFacts, [Fact]
     end
-    
+
     class CitationField <SuperDash
       property :name
       property :value
@@ -405,24 +405,6 @@ module FamilySearch
       def burial
         facts.find{|f|f.type == "http://gedcomx.org/Burial"} if facts
       end
-
-      def parents
-        relationships.select do |r|
-          r.type == "http://gedcomx.org/ParentChild" &&
-            r.person2.resourceId == persons[0].id
-        end if relationships
-      end
-
-      def children
-        relationships.select do |r|
-          r.type == "http://gedcomx.org/ParentChild" &&
-            r.person1.resourceId == persons[0].id
-        end if relationships
-      end
-
-      def spouses
-        relationships.select{|r|r.type == "http://gedcomx.org/Couple"}
-      end if relationships
     end
 
     class Relationship < Subject
@@ -630,6 +612,18 @@ module FamilySearch
 
       def initialize(args)
         super(args)
+      end
+
+      def parent_child_relationships
+        relationships.select do |r|
+          r.type == "http://gedcomx.org/ParentChild"
+        end if relationships
+      end
+
+      def couple_relationships
+        relationships.select do |r|
+          r.type == "http://gedcomx.org/Couple"
+        end if relationships
       end
 
       private
