@@ -16,6 +16,20 @@ module FamilySearch
         relationships_with_parents.map{|r| r.person1.resourceId}
       end
 
+      def child_ids
+        relationships_with_parents =
+          self.graph.parent_child_relationships.
+          select{|r| r.person1.resourceId == self.id}
+        relationships_with_parents.map{|r| r.person2.resourceId}
+      end
+
+      def spouse_ids
+        relationships_with_spouses =
+          self.graph.couple_relationships.
+          select{|r|r.person1.resourceId == self.id}
+        relationships_with_spouses.map{|r|r.person2.resourceId}
+      end
+
       def father_id
         child_of = self.graph.childAndParentsRelationships.find{|cpr|cpr.child.resourceId == self.id}
         if child_of && child_of.father

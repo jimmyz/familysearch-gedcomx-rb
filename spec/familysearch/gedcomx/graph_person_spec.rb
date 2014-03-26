@@ -21,11 +21,41 @@ describe FamilySearch::Gedcomx::GraphPerson do
   end
 
   describe "#parent_ids" do
-    it "should return array of parent ids" do
+    it "should return array of parents ids" do
       @root.parent_ids.should be_instance_of(Array)
       @root.parent_ids.each do |pi|
         pi.should be_instance_of(String)
       end
+    end
+
+    it "should include only unique ids" do
+      @root.parent_ids.uniq.should == @root.parent_ids
+    end
+  end
+
+  describe "#child_ids" do
+    it "should return array of parents ids" do
+      @root.child_ids.should be_instance_of(Array)
+      @root.child_ids.each do |ci|
+        ci.should be_instance_of(String)
+      end
+    end
+
+    it "should include only unique ids" do
+      @root.child_ids.uniq.should == @root.child_ids
+    end
+  end
+
+  describe "#spouse_ids" do
+    it "should return array of spouses ids" do
+      @root.spouse_ids.should be_instance_of(Array)
+      @root.spouse_ids.each do |si|
+        si.should be_instance_of(String)
+      end
+    end
+
+    it "should include only unique ids" do
+      @root.spouse_ids.uniq.should == @root.spouse_ids
     end
   end
 
