@@ -390,6 +390,14 @@ module FamilySearch
         (name) ? name.given_name : ''
       end
 
+      def male?
+        gender.type == "http://gedcomx.org/Male"
+      end
+
+      def female?
+        gender.type == "http://gedcomx.org/Female"
+      end
+
       def birth
         facts.find{|f|f.type == "http://gedcomx.org/Birth"} if facts
       end
