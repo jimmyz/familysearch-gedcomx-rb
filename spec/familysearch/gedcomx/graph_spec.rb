@@ -78,21 +78,40 @@ describe FamilySearch::Gedcomx::Graph do
       end
 
       it "should add the mother's relationships to the childAndParentsRelationships" do
-        cpr_ids = graph.childAndParentsRelationships.collect{|cpr|cpr.id}
+        cpr_ids = graph.childAndParentsRelationships.map(&:id)
         graph << @fs_mother
         graph << @fs_father
-        new_cpr_ids = graph.childAndParentsRelationships.collect{|cpr|cpr.id}
+        new_cpr_ids = graph.childAndParentsRelationships.map(&:id)
         (new_cpr_ids & cpr_ids).should == cpr_ids
+      end
+
+      it "should add the mother's relationships to the couple_relationships" do
+        current_cr_ids = graph.couple_relationships.collect{|r|r.id}
+        graph << @fs_mother
+        graph << @fs_father
+        new_cr_ids = graph.couple_relationships.collect{|r|r.id}
+        (new_cr_ids & current_cr_ids).should == current_cr_ids
+      end
+
+      it "should add the mother's relationships to the parent_child_relationships" do
+        current_pcr_ids = graph.parent_child_relationships.map(&:id)
+        graph << @fs_mother
+        graph << @fs_father
+        new_pcr_ids = graph.parent_child_relationships.map(&:id)
+        (new_pcr_ids & current_pcr_ids).should == current_pcr_ids
       end
 
       it "should not do anything if you add the same person twice" do
         graph << @fs_mother
         b4_size = graph.persons.size
-        b4_cpr_ids = graph.childAndParentsRelationships.collect{|cpr|cpr.id}
+        b4_cpr_ids = graph.childAndParentsRelationships.map(&:id)
+        b4_cr_ids = graph.couple_relationships.map(&:id)
+        b4_pcr_ids = graph.parent_child_relationships.map(&:id)
         graph << @fs_mother
         graph.persons.size.should == b4_size
-        cpr_ids = graph.childAndParentsRelationships.collect{|cpr|cpr.id}
-        cpr_ids.should == b4_cpr_ids
+        graph.childAndParentsRelationships.map(&:id).should == b4_cpr_ids
+        graph.couple_relationships.map(&:id).should == b4_cr_ids
+        graph.parent_child_relationships.map(&:id) == b4_pcr_ids
       end
     end
   end
