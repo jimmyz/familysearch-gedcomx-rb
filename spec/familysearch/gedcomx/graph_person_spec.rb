@@ -20,6 +20,15 @@ describe FamilySearch::Gedcomx::GraphPerson do
     @root.id.should == @child.persons[0].id
   end
 
+  describe "#parent_ids" do
+    it "should return array of parent ids" do
+      @root.parent_ids.should be_instance_of(Array)
+      @root.parent_ids.each do |pi|
+        pi.should be_instance_of(String)
+      end
+    end
+  end
+
   describe "#father_id" do
     it "should return the id of the father from the first childAndParentsRelationships" do
       @root.father_id.should == 'L78M-RLN'
