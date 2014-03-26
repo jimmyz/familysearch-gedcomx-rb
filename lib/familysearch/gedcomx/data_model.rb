@@ -3,7 +3,7 @@ module FamilySearch
     class ExtensibleData < SuperDash
       include SuperCoercion
       property :id
-    end    
+    end
 
     class Link < SuperDash
       property :hreflang
@@ -15,17 +15,17 @@ module FamilySearch
       property :type
       property :href
     end
-    
+
     class HypermediaEnabledData < ExtensibleData
       property :links
       coerce_key :links, {'key' => Link}
     end
-    
+
     class ResourceReference < SuperDash
       property :resourceId
       property :resource
     end
-        
+
     class Address < ExtensibleData
       property :city
       property :country
@@ -36,7 +36,7 @@ module FamilySearch
       property :street3
       property :value
     end
-    
+
     class OnlineAccount < ExtensibleData
       property :accountName
       property :serviceHomepage
@@ -52,7 +52,7 @@ module FamilySearch
       property :lang
       property :value
     end
-        
+
     class Agent < HypermediaEnabledData
       property :accounts
       property :addresses
@@ -71,14 +71,14 @@ module FamilySearch
       coerce_key :openid, ResourceReference
       coerce_key :phones, [ResourceReference]
     end
-    
+
     class Attribution < ExtensibleData
       property :contributor
       property :modified
       property :changeMessage
       coerce_key :contributor, ResourceReference
     end
-    
+
     class ChangeInfo < SuperDash
       property :objectModifier
       property :operation
@@ -90,7 +90,7 @@ module FamilySearch
     class Qualifier < SuperDash
       property :value
     end
-    
+
     class SourceReference < HypermediaEnabledData
       property :description
       property :resource
@@ -100,7 +100,7 @@ module FamilySearch
       coerce_key :attribution, Attribution
       coerce_key :qualifiers, [Qualifier]
     end
-    
+
     class Note < HypermediaEnabledData
       property :lang
       property :subject
@@ -108,7 +108,7 @@ module FamilySearch
       property :attribution
       coerce_key :attribution, Attribution
     end
-    
+
     class Conclusion < HypermediaEnabledData
       property :confidence
       property :lang
@@ -130,16 +130,16 @@ module FamilySearch
       coerce_key :analysis, ResourceReference
       coerce_key :attribution, Attribution
     end
-    
+
     class PlaceReference < ExtensibleData
       property :description
       property :field
-      property :original      
+      property :original
       coerce_key :field, EvidenceReference
       property :normalized
       coerce_key :normalized, [TextValue]
     end
-    
+
     class Date < ExtensibleData
       property :original
       property :formal
@@ -148,7 +148,7 @@ module FamilySearch
       coerce_key :normalized, [TextValue]
       coerce_key :field, EvidenceReference
     end
-    
+
     class Fact < Conclusion
       property :type
       property :date
@@ -156,12 +156,12 @@ module FamilySearch
       property :value
       property :qualifiers
       property :field
-      coerce_key :date, FamilySearch::Gedcomx::Date
+      coerce_key :date, ::FamilySearch::Gedcomx::Date
       coerce_key :place, PlaceReference
       coerce_key :qualifiers, [Qualifier]
       coerce_key :field, EvidenceReference
     end
-    
+
     class ChildAndParentsRelationship < Conclusion
       property :father
       property :mother
@@ -188,7 +188,7 @@ module FamilySearch
       property :spatial
       property :temporal
       coerce_key :spatial, PlaceReference
-      coerce_key :temporal, FamilySearch::Gedcomx::Date
+      coerce_key :temporal, ::FamilySearch::Gedcomx::Date
     end
 
     class FacetValue < HypermediaEnabledData
@@ -196,7 +196,7 @@ module FamilySearch
       property :value
       property :count
     end
-    
+
     class Facet < HypermediaEnabledData
       property :type
       property :title
@@ -206,7 +206,7 @@ module FamilySearch
       coerce_key :facets, [Facet]
       coerce_key :values, [FacetValue]
     end
-    
+
     class Collection < HypermediaEnabledData
       property :lang
       property :title
@@ -221,14 +221,14 @@ module FamilySearch
       coerce_key :facets, [Facet]
       coerce_key :attribution, Attribution
     end
-    
+
     class Comment < HypermediaEnabledData
       property :text
       property :created
       property :contributor
       coerce_key :contributor, ResourceReference
     end
-    
+
     class Discussion < HypermediaEnabledData
       property :title
       property :details
@@ -240,11 +240,11 @@ module FamilySearch
       coerce_key :contributor, ResourceReference
       coerce_key :comments, [Comment]
     end
-    
+
     class DiscussionReference < HypermediaEnabledData
       property :resource
     end
-    
+
     class DisplayProperties < ExtensibleData
       property :ascendancyNumber
       property :birthDate
@@ -256,14 +256,14 @@ module FamilySearch
       property :lifespan
       property :name
     end
-    
+
     class Document < Conclusion
       property :textType
       property :extracted
       property :type
       property :text
     end
-    
+
     class Error < SuperDash
       property :code
       property :label
@@ -276,66 +276,66 @@ module FamilySearch
       property :evidence
       property :media
       property :identifiers
-      
+
       coerce_key :evidence, [EvidenceReference]
       coerce_key :media, [SourceReference]
       # coerce_key :identifiers, [Identifier]
     end
-        
+
     class EventRole < Conclusion
       property :type
       property :person
       property :details
       coerce_key :person, ResourceReference
     end
-        
+
     class Event < Subject
       property :type
       property :date
       property :place
       property :roles
-      coerce_key :date, FamilySearch::Gedcomx::Date
+      coerce_key :date, ::FamilySearch::Gedcomx::Date
       coerce_key :place, PlaceReference
       coerce_key :roles, [EventRole]
     end
-    
+
     class Gender < Conclusion
       property :type
       property :field
       coerce_key :field, EvidenceReference
     end
-    
+
     class NamePart < ExtensibleData
       property :value
       property :type
       property :field
       property :qualifiers
-      
+
       coerce_key :field, EvidenceReference
       coerce_key :qualifiers, [Qualifier]
     end
-    
+
     class NameForm < ExtensibleData
       property :lang
       property :fullText
       property :parts
       property :field
-      
+
       coerce_key :parts, [NamePart]
       coerce_key :field, EvidenceReference
-      
+
       def surname
         return '' if parts.nil?
         surname_piece = parts.find{|p|p.type == 'http://gedcomx.org/Surname'}
         surname_piece ? surname_piece.value : ''
       end
-      
+
       def given_name
         return '' if parts.nil?
         given_piece = parts.find{|p|p.type == 'http://gedcomx.org/Given'}
         given_piece ? given_piece.value : ''
       end
-      
+
     end
 
     class Name < Conclusion
@@ -343,23 +343,23 @@ module FamilySearch
       property :preferred
       property :date
       property :nameForms
-      coerce_key :date, FamilySearch::Gedcomx::Date
-      coerce_key :nameForms, [NameForm]  
-      
+      coerce_key :date, ::FamilySearch::Gedcomx::Date
+      coerce_key :nameForms, [NameForm]
+
       def fullText
         (nameForms && nameForms[0]) ? nameForms[0].fullText : ""
       end
-      
+
       def surname
         (nameForms && nameForms[0]) ? nameForms[0].surname : ""
       end
-      
+
       def given_name
         (nameForms && nameForms[0]) ? nameForms[0].given_name : ""
       end
-      
+
     end
-    
+
     class Person < Subject
       property :collection
       property :living
@@ -367,46 +367,64 @@ module FamilySearch
       property :names
       property :facts
       property :display
-      
+
       coerce_key :gender, Gender
       coerce_key :names, [Name]
       coerce_key :facts, [Fact]
       coerce_key :display, DisplayProperties
-      
+
       # Returns the first name in the names array
       def name
         names[0] if names
       end
-      
+
       def full_name
         (name) ? name.fullText : ''
       end
-      
+
       def surname
         (name) ? name.surname : ''
       end
-      
+
       def given_name
         (name) ? name.given_name : ''
       end
-      
+
       def birth
         facts.find{|f|f.type == "http://gedcomx.org/Birth"} if facts
       end
-      
+
       def death
         facts.find{|f|f.type == "http://gedcomx.org/Death"} if facts
       end
-      
+
       def christening
         facts.find{|f|f.type == "http://gedcomx.org/Christening"} if facts
       end
-      
+
       def burial
         facts.find{|f|f.type == "http://gedcomx.org/Burial"} if facts
       end
+
+      def parents
+        relationships.select do |r|
+          r.type == "http://gedcomx.org/ParentChild" &&
+            r.person2.resourceId == persons[0].id
+        end if relationships
+      end
+
+      def children
+        relationships.select do |r|
+          r.type == "http://gedcomx.org/ParentChild" &&
+            r.person1.resourceId == persons[0].id
+        end if relationships
+      end
+
+      def spouses
+        relationships.select{|r|r.type == "http://gedcomx.org/Couple"}
+      end if relationships
     end
-    
+
     class Relationship < Subject
       property :type
       property :person1
@@ -418,17 +436,17 @@ module FamilySearch
       coerce_key :facts, [Fact]
       coerce_key :field, EvidenceReference
     end
-    
+
     class SourceCitation < HypermediaEnabledData
       property :lang
       property :citationTemplate
       property :fields
       property :value
-      
+
       coerce_key :citationTemplate, ResourceReference
       coerce_key :fields, [CitationField]
     end
-    
+
     class SourceDescription < HypermediaEnabledData
       property :about
       property :mediaType
@@ -441,7 +459,7 @@ module FamilySearch
       property :titles
       property :notes
       property :attribution
-      
+
       coerce_key :citations, [SourceCitation]
       coerce_key :mediator, ResourceReference
       coerce_key :sources, [SourceReference]
@@ -451,7 +469,7 @@ module FamilySearch
       coerce_key :notes, [Note]
       coerce_key :attribution, Attribution
     end
-    
+
     class PlaceDescription < Subject
       property :type
       property :names
@@ -460,14 +478,14 @@ module FamilySearch
       property :longitude
       property :spatialDescription
       coerce_key :names, [TextValue]
-      coerce_key :temporalDescription, FamilySearch::Gedcomx::Date
+      coerce_key :temporalDescription, ::FamilySearch::Gedcomx::Date
       coerce_key :spatialDescription, ResourceReference
-      
+
       def value
         names[0].value if names
       end
     end
-    
+
     class FieldValue < Conclusion
       property :resource
       property :datatype
@@ -476,14 +494,14 @@ module FamilySearch
       property :text
       coerce_key :interpretationSources, [ResourceReference]
     end
-    
+
     class Field < HypermediaEnabledData
       property :type
       property :label
       property :values
       coerce_key :values, [FieldValue]
     end
-    
+
     class Record < HypermediaEnabledData
       property :type
       property :sources
@@ -505,7 +523,7 @@ module FamilySearch
       coerce_key :notes, [Note]
       coerce_key :attribution, Attribution
     end
-    
+
     class FieldDescriptor < SuperDash
       property :displayOriginalValue
       property :description
@@ -513,13 +531,13 @@ module FamilySearch
       property :originalLabel
       property :systemLabel
     end
-    
+
     class RecordDescriptor < HypermediaEnabledData
       property :lang
       property :fields
       coerce_key :fields, [FieldDescriptor]
     end
-    
+
     class Gedcomx < HypermediaEnabledData
       property :lang
       property :attribution
@@ -545,7 +563,7 @@ module FamilySearch
       coerce_key :records, [Record]
       coerce_key :recordDescriptors, [RecordDescriptor]
     end
-    
+
     class User < HypermediaEnabledData
       property :alternateEmail
       property :birthDate
@@ -565,8 +583,8 @@ module FamilySearch
       property :phoneNumber
       property :preferredLanguage
       property :treeUserId
-    end    
-    
+    end
+
     class Merge < SuperDash
       include SuperCoercion
       property :resourcesToDelete
@@ -574,7 +592,7 @@ module FamilySearch
       coerce_key :resourcesToDelete, [ResourceReference]
       coerce_key :resourcesToCopy, [ResourceReference]
     end
-    
+
     class MergeConflict < SuperDash
       include SuperCoercion
       property :survivorResource
@@ -582,7 +600,7 @@ module FamilySearch
       coerce_key :survivorResource, ResourceReference
       coerce_key :duplicateResource, ResourceReference
     end
-    
+
     class MergeAnalysis < SuperDash
       include SuperCoercion
       property :survivorResources
@@ -597,7 +615,7 @@ module FamilySearch
       coerce_key :survivor, ResourceReference
       coerce_key :duplicate, ResourceReference
     end
-    
+
     class FamilySearch < Gedcomx
       property :childAndParentsRelationships
       property :discussions
@@ -609,13 +627,13 @@ module FamilySearch
       coerce_key :users, [User]
       coerce_key :merges, [Merge]
       coerce_key :mergeAnalyses, [MergeAnalysis]
-      
+
       def initialize(args)
         super(args)
       end
-      
+
       private
-            
+
       def find_place_references(hash_obj)
         place_references = []
         hash_obj.each do |k,v|
@@ -632,33 +650,33 @@ module FamilySearch
         return place_references
       end
     end
-    
+
     class HealthConfig < SuperDash
       property :buildDate
       property :buildVersion
       property :databaseVersion
       property :platformVersion
     end
-        
+
     class Tag < SuperDash
       property :resource
     end
-    
+
     class AtomCommonAttributes < SuperDash
       property :base
       property :lang
     end
-    
+
     class AtomExtensibleElement < AtomCommonAttributes
       include SuperCoercion
     end
-    
+
     class AtomPerson < AtomExtensibleElement
       property :name
       property :uri
       property :email
     end
-    
+
     class AtomGenerator < SuperDash
       property :base
       property :uri
@@ -666,21 +684,21 @@ module FamilySearch
       property :version
       property :value
     end
-    
+
     class AtomCategory < AtomCommonAttributes
       property :scheme
       property :term
       property :label
     end
-    
+
     class AtomContent < SuperDash
       include SuperCoercion
       property :type
       property :gedcomx
-      
+
       coerce_key :gedcomx, Gedcomx
     end
-    
+
     class AtomEntry < AtomExtensibleElement
       property :authors
       property :categories
@@ -694,14 +712,14 @@ module FamilySearch
       property :score
       property :title
       property :updated
-      
+
       coerce_key :authors, [AtomPerson]
       coerce_key :categories, [AtomCategory]
       coerce_key :content, AtomContent
       coerce_key :contributors, [AtomPerson]
       coerce_key :links, {'key' => Link}
     end
-    
+
     class AtomFeed < AtomExtensibleElement
       property :authors
       property :contributors
@@ -718,7 +736,7 @@ module FamilySearch
       property :updated
       property :entries
       property :facets
-      
+
       coerce_key :authors, [AtomPerson]
       coerce_key :contributors, [AtomPerson]
       coerce_key :generator, AtomGenerator
