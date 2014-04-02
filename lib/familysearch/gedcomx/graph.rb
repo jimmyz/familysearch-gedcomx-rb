@@ -51,7 +51,7 @@ module FamilySearch
 
       def update_cpr(familysearch)
         current_cpr = self.childAndParentsRelationships
-        fs_cpr = familysearch.childAndParentsRelationships
+        fs_cpr = familysearch.childAndParentsRelationships || []
         new_cpr = (current_cpr + fs_cpr).uniq
         self.childAndParentsRelationships = new_cpr
       end
