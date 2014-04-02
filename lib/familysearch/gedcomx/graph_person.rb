@@ -20,14 +20,19 @@ module FamilySearch
         relationships_with_parents =
           self.graph.parent_child_relationships.
           select{|r| r.person1.resourceId == self.id}
-        relationships_with_parents.map{|r| r.person2.resourceId}
+        relationships_with_parents.map{|r|r.person2.resourceId}
       end
 
       def spouse_ids
-        relationships_with_spouses =
+        if self.male?
           self.graph.couple_relationships.
-          select{|r|r.person1.resourceId == self.id}
-        relationships_with_spouses.map{|r|r.person2.resourceId}
+            select{|r|r.person1.resourceId == self.id}.
+            map{|r|r.person2.resourceId}
+        else
+          self.graph.couple_relationships.
+            select{|r|r.person2.resourceId == self.id}.
+            map{|r|r.person1.resourceId}
+        end
       end
 
       def father_id
